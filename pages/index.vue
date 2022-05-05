@@ -10,7 +10,27 @@
             <th>Forks</th>
           </tr>
         </thead>
+ 
+          
         <tbody id='tableBody'>
+          <tr
+            v-for="(item,index) in highestRatedJSRepos"
+            :key="index"
+            cols="3"
+          >
+            <td>
+              {{item.name}}
+            </td>
+            <td>
+               {{item.description}}
+            </td>
+            <td>
+               {{item.watchers}}
+            </td>
+            <td>
+               {{item.forks_count}}
+            </td>
+          </tr>
         </tbody>
         <tfoot>
           <tr>
@@ -115,7 +135,7 @@ tr:nth-child(even) {
         .$get(this.url)
         .then(function (response) {
           thisPoiner.highestRatedJSRepos = response.items
-          thisPoiner.populateTable(thisPoiner.highestRatedJSRepos)
+          //thisPoiner.populateTable(thisPoiner.highestRatedJSRepos)
         })
         .catch(function(error) {
           console.error(error)
